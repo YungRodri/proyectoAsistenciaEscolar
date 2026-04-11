@@ -109,6 +109,73 @@ public class Curso {
             System.out.println(estudiante.getRut() + " - " + estudiante.getNombre() + estudiante.getApellidoP() + estudiante.getApellidoP());
         }
     }
+
+    public void mostrarAsistenciaEstudiantes(String rut)
+    {
+        Estudiante estudiante_cmp = estudiantes.get(rut);
+        if(estudiante_cmp != null){
+            estudiante_cmp.mostrarHistorial();
+        }
+    }
+    public void listarEstudianteConMasdeInasistencias(int max)
+    {
+        for(Estudiante estudiante_cmp : estudiantes.values())
+        {
+            if(estudiante_cmp.contarAsistenciaExtraordinarias() > max)
+            {
+                System.out.println("Rut -> " + estudiante_cmp.getRut() + " - " + estudiante_cmp.getNombreCompleto());
+            }
+        }
+
+    }
+    public void mostrarAsistenciasDeEstudiante(String Rut)
+    {
+        Estudiante estudiante_cmp = estudiantes.get(Rut);
+        if(estudiante_cmp != null)
+        {
+            estudiante_cmp.mostrarHistorial();
+
+        }
+        else
+        {
+            System.out.println("Estudiante no encontrado");
+        }
+
+    }
+    public boolean editarAsistenciaDeEstudiante(String rut , String idAsistenica , String newObserv)
+    {
+        Estudiante  estudiante_cmp = estudiantes.get(rut );
+        if(estudiante_cmp != null)
+        {
+            return estudiante_cmp.editarAsistencia(idAsistenica, newObserv);
+        }
+        return false;
+    }
+    public boolean eliminarAsistenciaDeEstudiante(String rut , String idAsistenica)
+    {
+        Estudiante  estudiante_cmp = estudiantes.get(rut );
+        if(estudiante_cmp != null)
+        {
+            return estudiante_cmp.eliminarAsistencia(idAsistenica);
+
+        }
+        return false;
+
+    }
+    public void registrarAsistencia(String rut, Asistencia asistencia)
+    {
+        Estudiante estudiante_cmp = estudiantes.get(rut);
+
+        if (estudiante_cmp != null)
+        {
+            estudiante_cmp.agregarAsistencia(asistencia);
+        }
+        else
+        {
+            System.out.println("Estudiante no encontrado");
+        }
+    }
+
 }
 
 
