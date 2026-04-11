@@ -66,6 +66,21 @@ public class Curso {
             System.out.printf("%-10d||%-14s||%-14s %-14s||\n",i+1,nombres,apellidoP,apellidoM);
         }
     }
+
+    public boolean inscribirEstudiante(Estudiante estudiante)
+    {
+        if (estudiante != null && !estudiantes.containsKey(estudiante.getRut()))
+        {
+            estudiantes.put(estudiante.getRut(), estudiante);
+            return true;
+        }
+        return false;
+    }
+
+    public Estudiante buscarEstudiante(String rut)
+    {
+        return estudiantes.get(rut);
+    }
     
    public boolean retirarEstudiante(String rut)
     {
