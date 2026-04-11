@@ -1,16 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package AsistenciaCurso;
-import java.util.Hashtable;
-/**
- *
- * @author aleja
- */
-public class Sesion {
-    private int nSesiones[] = {1,2,3};
-    private String jornada[] ={"Mañana","Tarde"};
-    Hashtable<Estudiante,Integer> sesiones = new Hashtable<>();
+public class SalidaAnticipada extends Asistencia
+{
+    private String horaSalida;
+
+    public SalidaAnticipada(String id, String fecha, String observacion, String horaSalida)
+    {
+        super(id, fecha, observacion);
+        this.horaSalida = horaSalida;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+    @Override
+    public String getResumen()
+    {
+        return "Salida anticipada el día " + getFecha() +
+            " a las " + horaSalida +
+            ". Observación: " + getObservacion();
+
+    }
 }
