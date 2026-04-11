@@ -75,25 +75,53 @@ public class Main {
         }
     }
     
+    public static Curso GenerarCurso(){
+        int numCurso;
+        
+        System.out.println("Seleccione un curso: ");
+        for(int i=0; i < listaCursos.length; i++){
+                System.out.println((i+1)+". " +listaCursos[i]);
+            }
+        numCurso = Integer.parseInt(entrada.nextLine());
+        if(numCurso <= listaCursos.length && numCurso > 0){
+            System.out.println("Curso generado!!");
+            return new Curso(listaCursos[numCurso-1]);
+        }else{
+            return null;
+        }
+    }
+    
     public static void main(String[] args){
         int opcion;
+        
+        do{
         System.out.println("=======MENÚ=======");
         System.out.println("Seleccione una Opción: ");
         System.out.println("1. Ingreso de Alumnos");
         System.out.println("2. Mostrar Alumnos Inscritos");
+        System.out.println("3. Generar Curso");
         
         opcion = Integer.parseInt(entrada.nextLine());
         
-        if(opcion == 1){
-            agregarEstudiante();
-        }else if(opcion == 2){
-            mostrarEstudiante(listaGlobal);
-        }else{
-            System.out.println("Ingrese una Opcion valida");
-        }
-        
-        
-        
-        
-    }
+        switch(opcion){
+            case 1:
+              agregarEstudiante();
+              break;
+            case 2:
+               mostrarEstudiante(listaGlobal);
+               break;
+            case 3:
+                Curso curso = GenerarCurso();
+                curso.poblarCurso(listaGlobal);
+                curso.generarLista();
+                break;
+            case 4:
+                System.out.println("Saliendo...");
+                break;
+            default:
+                System.out.println("Ingresa un valor valido!!");
+                
+        }     
+      }while(opcion !=4);
+    }  
 }
