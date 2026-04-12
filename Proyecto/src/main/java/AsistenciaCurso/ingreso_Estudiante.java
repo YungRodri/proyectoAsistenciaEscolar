@@ -19,7 +19,6 @@ public class ingreso_Estudiante extends javax.swing.JPanel {
      * Creates new form ingreso_Estudiante
      */
     Ventana ventana;
-    List<Estudiante> listaEstudiantes = new ArrayList<>();
     public ingreso_Estudiante(Ventana ventana) {
         
         this.ventana = ventana;
@@ -285,7 +284,7 @@ public class ingreso_Estudiante extends javax.swing.JPanel {
 
         Estudiante alumno = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
 
-        listaEstudiantes.add(alumno);
+        Main.listaGlobal.add(alumno);
         agregarEstudiante();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -92,6 +92,9 @@ public class Main {
     }
     
     public static void main(String[] args){
+        // Sistema Batch: Cargar datos al iniciar
+        listaGlobal = GestorArchivos.cargarEstudiantes();
+        
         int opcion;
         
         do{
@@ -116,6 +119,8 @@ public class Main {
                 curso.generarLista();
                 break;
             case 4:
+                System.out.println("Guardando datos...");
+                GestorArchivos.guardarEstudiantes(listaGlobal);
                 System.out.println("Saliendo...");
                 break;
             default:

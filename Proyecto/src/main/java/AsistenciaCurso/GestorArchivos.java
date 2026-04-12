@@ -1,0 +1,58 @@
+package AsistenciaCurso;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class GestorArchivos {
+    private static final String ARCHIVO_ESTUDIANTES = "estudiantes.csv";
+
+    public static ArrayList<Estudiante> cargarEstudiantes() {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        File archivo = new File(ARCHIVO_ESTUDIANTES);
+
+        if (!archivo.exists()) {
+            return estudiantes; // Retorna vacio si no existe
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 6) {
+                    String rut = datos[0];
+                    String nombre = datos[1];
+                    String apellidoP = datos[2];
+                    String apellidoM = datos[3];
+                    int edad = Integer.parseInt(datos[4]);
+                    String curso = datos[5];
+
+                    Estudiante e = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
+                    estudiantes.add(e);
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error al cargar estudiantes desde CSV: " + e.getMessage());
+        }
+
+        return estudiantes;
+    }
+
+    public static void guardarEstudiantes(ArrayList<Estudiante> lista) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_ESTUDIANTES))) {
+            for (Estudiante e : lista) {
+                // Formato: rut;nombre;apellidoP;apellidoM;edad;curso
+                String linea = String.format("%s;%s;%s;%s;%d;%s",
+                        e.getRut(), e.getNombre(), e.getApellidoP(), e.getApellidoM(), e.getEdad(), e.getCurso());
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al guardar estudiantes en CSV: " + e.getMessage());
+        }
+    }
+}

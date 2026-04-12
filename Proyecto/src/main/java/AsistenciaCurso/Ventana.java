@@ -6,6 +6,8 @@
 package AsistenciaCurso;
 
 import java.awt.CardLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -19,6 +21,17 @@ public class Ventana extends javax.swing.JFrame {
     CardLayout layout;
     public Ventana() {
         initComponents();
+        
+        // Cargar datos al iniciar la interfaz grafica
+        Main.listaGlobal = GestorArchivos.cargarEstudiantes();
+        
+        // Agregar listener para guardar al cerrar la ventana
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                GestorArchivos.guardarEstudiantes(Main.listaGlobal);
+            }
+        });
         
         layout = new CardLayout();
         panelContenedor.setLayout(layout);
