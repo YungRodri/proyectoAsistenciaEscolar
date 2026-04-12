@@ -10,11 +10,11 @@ package AsistenciaCurso;
  * @author aleja
  */
 public class Persona {
-    protected String nombre;
-    protected String apellidoP;
-    protected String apellidoM;
-    protected String rut;
-    protected int edad;
+    private String nombre;
+    private String apellidoP;
+    private String apellidoM;
+    private String rut;
+    private int edad;
 
     public Persona(String nombre, String apellidoP, String apellidoM, String rut, int edad) {
         this.nombre = nombre;
