@@ -125,5 +125,9 @@ public class Persona {
         return edad;
     }
 
+    public String getNombreCompleto() {
+        return nombre + " " + apellidoP + " " + apellidoM;
+    }
+
     
 }

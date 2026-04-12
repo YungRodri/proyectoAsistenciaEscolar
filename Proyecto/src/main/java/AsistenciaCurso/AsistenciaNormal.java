@@ -1,3 +1,5 @@
+package AsistenciaCurso;
+
 public class AsistenciaNormal extends Asistencia
 {
 

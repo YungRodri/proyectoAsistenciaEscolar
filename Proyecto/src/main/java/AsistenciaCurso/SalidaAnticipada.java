@@ -1,3 +1,5 @@
+package AsistenciaCurso;
+
 public class SalidaAnticipada extends Asistencia
 {
     private String horaSalida;
