@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author aleja
  */
-public class ingreso_Estudiante extends javax.swing.JPanel {
+public class IngresoEstudiante extends javax.swing.JPanel {
 
     /**
      * Creates new form ingreso_Estudiante
      */
     Ventana ventana;
-    public ingreso_Estudiante(Ventana ventana) {
+    public IngresoEstudiante(Ventana ventana) {
         
         this.ventana = ventana;
         

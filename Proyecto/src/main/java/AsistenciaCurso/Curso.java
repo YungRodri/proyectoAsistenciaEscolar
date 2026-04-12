@@ -117,7 +117,7 @@ public class Curso {
             estudiante_cmp.mostrarHistorial();
         }
     }
-    public void listarEstudianteConMasdeInasistencias(int max)
+    public void listarEstudianteConMasDeInasistencias(int max)
     {
         for(Estudiante estudiante_cmp : estudiantes.values())
         {

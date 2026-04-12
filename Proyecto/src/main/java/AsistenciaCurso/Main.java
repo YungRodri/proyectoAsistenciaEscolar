@@ -95,6 +95,28 @@ public class Main {
         // Sistema Batch: Cargar datos al iniciar
         listaGlobal = GestorArchivos.cargarEstudiantes();
         
+        System.out.println("====== INICIO ======");
+        System.out.println("Seleccione el modo de ejecución:");
+        System.out.println("1. Modo Interfaz Gráfica (Ventana)");
+        System.out.println("2. Modo Consola");
+        System.out.print("Opción: ");
+        
+        int modo = 2;
+        try {
+            modo = Integer.parseInt(entrada.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada inválida. Iniciando en modo consola por defecto...");
+        }
+
+        if (modo == 1) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new Ventana().setVisible(true);
+                }
+            });
+            return; // Termina el hilo de consola, el de GUI sigue vivo
+        }
+        
         int opcion;
         
         do{

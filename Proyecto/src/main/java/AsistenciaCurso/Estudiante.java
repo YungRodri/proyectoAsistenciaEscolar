@@ -120,7 +120,7 @@ public class Estudiante extends Persona{
         }
         return cont;
     }
-    public int contarAsistenciaAnticpadas()
+    public int contarAsistenciasAnticipadas()
     {
         int cont = 0;
         Asistencia asistencia_cmp;
