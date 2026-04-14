@@ -3,8 +3,11 @@ package AsistenciaCurso;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,10 +22,10 @@ public class GestorArchivos {
             return estudiantes; // Retorna vacio si no existe
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(";");
+                String[] datos = linea.split(";", -1);
                 if (datos.length == 6) {
                     String rut = datos[0];
                     String nombre = datos[1];
@@ -43,7 +46,7 @@ public class GestorArchivos {
     }
 
     public static void guardarEstudiantes(ArrayList<Estudiante> lista) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_ESTUDIANTES))) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ARCHIVO_ESTUDIANTES), StandardCharsets.UTF_8))) {
             for (Estudiante e : lista) {
                 // Formato: rut;nombre;apellidoP;apellidoM;edad;curso
                 String linea = String.format("%s;%s;%s;%s;%d;%s",
