@@ -6,41 +6,119 @@
 package AsistenciaCurso;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.TreeMap;
+import java.util.Comparator;
 
-
-/**
- *
- * @author aleja
- */
+ 
 public class Curso {
     private String nombre;
     private TreeMap<String, Estudiante> estudiantes;
-
-    public Curso(String nombre) {
+    
+    public Curso(String nombre){
         this.nombre = nombre;
-        this.estudiantes = new TreeMap<>();
+        estudiantes = new TreeMap<>();
     }
 
-    public String getNombre() {
+    public String getNombre(){
         return nombre;
     }
 
-    public TreeMap<String, Estudiante> getListaCurso() {
-        return estudiantes;
-    }
-
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre){
         this.nombre = nombre;
     }
-
-    public void setListaCurso(TreeMap<String, Estudiante> listaCurso) {
-        this.estudiantes = listaCurso;
+   
+    public boolean inscribirEstudiante(Estudiante estudiante){
+        if(estudiante != null && !estudiantes.containsKey(estudiante.getRut())){
+            estudiantes.put(estudiante.getRut(), estudiante);
+            return true;
+        }
+        return false;
+    }
+    
+    public void mostrarEstudiantes(){
+        if(estudiantes.isEmpty()){
+            System.out.println("No hay estudiantes registrados en el curso " + nombre);
+            return;
+        }
+        for(Estudiante e : estudiantes.values()){
+            System.out.println(e.getRut() + " - " + e.getNombre() + e.getApellidoP() + e.getApellidoM());
+        }
+    }
+    
+    public Estudiante buscarEstudiante(String rut){
+        return estudiantes.get(rut);
+    }
+    
+    public boolean editarEstudiante(String rut, String nombre, String ApellidoP, String ApellidoM, int edad){
+        Estudiante e = buscarEstudiante(rut);
+        if(e != null){
+            e.setNombre(nombre);
+            e.setApellidoP(ApellidoP);
+            e.setApellidoM(ApellidoM);
+            e.setEdad(edad);
+            return true;
+        }
+        return false;
+    }
+    
+    public void retirarEstudiante(String rut){
+         if(estudiantes.containsKey(rut)){
+             estudiantes.remove(rut);
+         }
+    }
+    
+    public void registrarAsistencia(String rut, Asistencia asistencias){
+        Estudiante e = buscarEstudiante(rut);
+        if(e != null){
+            e.agregarAsistencia(asistencias);
+        }
+    }
+    
+    public void mostrarAsistenciasDeEstudiante(String rut){
+        Estudiante e = buscarEstudiante(rut);
+        if(e != null){
+            e.mostrarHistorial();
+        } else{
+            System.out.println("Estudiante no encontrado.");
+        }
+    }
+    
+    public Asistencia buscarAsistenciaDeEstudiante(String rut, String id){
+        Estudiante e = buscarEstudiante(rut);
+        if(e!= null){
+            return e.buscarAsistencia(id);
+        } else{
+            return null;
+        }
+    }
+    
+    public boolean editarAsistenciaDeEstudiante(String rut, String id, String observacion){
+        Estudiante e = buscarEstudiante(rut);
+        if(e!= null){
+            return e.editarAsistencia(id, observacion);
+        }
+        return false;
+    }
+    
+    public boolean eliminarAsistenciaDeEstudiante(String rut, String id) {
+        Estudiante e = buscarEstudiante(rut);
+        if (e != null) {
+            return e.eliminarAsistencia(id);
+        }
+        return false;
+    }
+    
+    public void listarEstudiantesConMasdeInasistencias(int limite) {
+        for (Estudiante e : estudiantes.values()) {
+            int totalFaltas = e.contarAsistenciaExtraordinarias() + e.contarAsistenciaAnticpadas();
+            if (totalFaltas > limite) {
+                  System.out.println("Rut -> " + e.getRut() + " - " + e.getNombre() + e.getApellidoP() + e.getApellidoM());
+            }
+        }
     }
     
     public void poblarCurso(TreeMap<String, Estudiante> mapaGlobal){
-        for(Estudiante alumno : mapaGlobal.values()){
+        for(Estudiante alumno: mapaGlobal.values()){
             if(alumno.getCurso().equalsIgnoreCase(this.nombre)){
                 estudiantes.put(alumno.getRut(), alumno);
             }
@@ -58,124 +136,10 @@ public class Curso {
         System.out.println("Lista curso "+this.nombre+": ");
         System.out.println("Nro. Lista||    Nombre    ||          Apellidos          ||");
         for(i=0; i<lista.size();i++){
-            Estudiante alumno = lista.get(i);
-            String nombres= alumno.getNombre();
-            String apellidoP = alumno.getApellidoP();
-            String apellidoM = alumno.getApellidoM();
-            
-            System.out.printf("%-10d||%-14s||%-14s %-14s||\n",i+1,nombres,apellidoP,apellidoM);
+            Estudiante alumno = lista.get(i);          
+            System.out.printf("%-10d||%-14s||%-14s %-14s||\n",i+1,alumno.getNombre(),alumno.getApellidoP(),alumno.getApellidoM());
         }
     }
-
-    public boolean inscribirEstudiante(Estudiante estudiante)
-    {
-        if (estudiante != null && !estudiantes.containsKey(estudiante.getRut()))
-        {
-            estudiantes.put(estudiante.getRut(), estudiante);
-            return true;
-        }
-        return false;
-    }
-
-    public Estudiante buscarEstudiante(String rut)
-    {
-        return estudiantes.get(rut);
-    }
-    
-   public boolean retirarEstudiante(String rut)
-    {
-        if (estudiantes.containsKey(rut))
-        {
-            estudiantes.remove(rut);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean existeEstudiante(String rut)
-    {
-        return estudiantes.containsKey(rut);
-    }
-
-    public int getCantidadAlumnos()
-    {
-        return estudiantes.size();
-    }
-
-    public void mostrarEstudiantes()
-    {
-        for (Estudiante estudiante : estudiantes.values())
-        {
-            System.out.println(estudiante.getRut() + " - " + estudiante.getNombre() + estudiante.getApellidoP() + estudiante.getApellidoP());
-        }
-    }
-
-    public void mostrarAsistenciaEstudiantes(String rut)
-    {
-        Estudiante estudiante_cmp = estudiantes.get(rut);
-        if(estudiante_cmp != null){
-            estudiante_cmp.mostrarHistorial();
-        }
-    }
-    public void listarEstudianteConMasDeInasistencias(int max)
-    {
-        for(Estudiante estudiante_cmp : estudiantes.values())
-        {
-            if(estudiante_cmp.contarAsistenciaExtraordinarias() > max)
-            {
-                System.out.println("Rut -> " + estudiante_cmp.getRut() + " - " + estudiante_cmp.getNombreCompleto());
-            }
-        }
-
-    }
-    public void mostrarAsistenciasDeEstudiante(String Rut)
-    {
-        Estudiante estudiante_cmp = estudiantes.get(Rut);
-        if(estudiante_cmp != null)
-        {
-            estudiante_cmp.mostrarHistorial();
-
-        }
-        else
-        {
-            System.out.println("Estudiante no encontrado");
-        }
-
-    }
-    public boolean editarAsistenciaDeEstudiante(String rut , String idAsistenica , String newObserv)
-    {
-        Estudiante  estudiante_cmp = estudiantes.get(rut );
-        if(estudiante_cmp != null)
-        {
-            return estudiante_cmp.editarAsistencia(idAsistenica, newObserv);
-        }
-        return false;
-    }
-    public boolean eliminarAsistenciaDeEstudiante(String rut , String idAsistenica)
-    {
-        Estudiante  estudiante_cmp = estudiantes.get(rut );
-        if(estudiante_cmp != null)
-        {
-            return estudiante_cmp.eliminarAsistencia(idAsistenica);
-
-        }
-        return false;
-
-    }
-    public void registrarAsistencia(String rut, Asistencia asistencia)
-    {
-        Estudiante estudiante_cmp = estudiantes.get(rut);
-
-        if (estudiante_cmp != null)
-        {
-            estudiante_cmp.agregarAsistencia(asistencia);
-        }
-        else
-        {
-            System.out.println("Estudiante no encontrado");
-        }
-    }
-
 }
 
 
