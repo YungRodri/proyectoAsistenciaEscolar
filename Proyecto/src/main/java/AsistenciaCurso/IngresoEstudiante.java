@@ -5,7 +5,7 @@
  */
 package AsistenciaCurso;
 
-import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -284,7 +284,7 @@ public class IngresoEstudiante extends javax.swing.JPanel {
 
         Estudiante alumno = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
 
-        Main.listaGlobal.add(alumno);
+        Main.listaGlobal.put(alumno.getRut(), alumno);
         agregarEstudiante();
     }//GEN-LAST:event_jButton1ActionPerformed
 

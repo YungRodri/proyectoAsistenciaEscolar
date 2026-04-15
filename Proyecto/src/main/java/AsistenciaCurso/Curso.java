@@ -39,8 +39,8 @@ public class Curso {
         this.estudiantes = listaCurso;
     }
     
-    public void poblarCurso(ArrayList<Estudiante> listaGlobal){
-        for(Estudiante alumno: listaGlobal){
+    public void poblarCurso(TreeMap<String, Estudiante> mapaGlobal){
+        for(Estudiante alumno : mapaGlobal.values()){
             if(alumno.getCurso().equalsIgnoreCase(this.nombre)){
                 estudiantes.put(alumno.getRut(), alumno);
             }

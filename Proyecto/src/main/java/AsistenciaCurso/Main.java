@@ -5,12 +5,12 @@
  */
 package AsistenciaCurso;
 
-import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.Scanner;
 
 public class Main {
 
-    public static ArrayList<Estudiante> listaGlobal = new ArrayList<>();
+    public static TreeMap<String, Estudiante> listaGlobal = new TreeMap<>();
     static Scanner entrada = new Scanner(System.in);
     public static String listaCursos[] = {"1° Básico", "2° Básico", "3° Básico", "4° Básico","5° Básico",
     "6° Básico", "7° Básico", "8° Básico", "1° Medio","2° Medio", "3° Medio", "4° Medio"};
@@ -51,7 +51,7 @@ public class Main {
             String curso = listaCursos[numCurso -1];
         
         Estudiante alumno = new Estudiante(nombre,apellidoP,apellidoM,rut,edad,curso);
-        listaGlobal.add(alumno);
+        listaGlobal.put(alumno.getRut(), alumno);
         
         System.out.println("¿Continuar? (S/N): ");
         opcion = entrada.nextLine();
@@ -60,18 +60,14 @@ public class Main {
         
     }
     
-    public static void mostrarEstudiante(ArrayList<Estudiante> listaGlobal){
-        
+    public static void mostrarEstudiante(TreeMap<String, Estudiante> mapa){
         System.out.println("-------Lista de Estudiantes------");
-        
-        for(int i=0;i<listaGlobal.size();i++){
-            
-            Estudiante alumno = listaGlobal.get(i);
-            System.out.println("Estudiante #"+ (i+1));
+        int i = 1;
+        for (Estudiante alumno : mapa.values()) {
+            System.out.println("Estudiante #" + i++);
             System.out.println(alumno.getNombre() + " " + alumno.getApellidoP() + " " + alumno.getApellidoM());
-            System.out.println("Curso: "+ alumno.getCurso());
+            System.out.println("Curso: " + alumno.getCurso());
             System.out.println("===============");
-            
         }
     }
     

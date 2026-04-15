@@ -9,13 +9,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class GestorArchivos {
     private static final String ARCHIVO_ESTUDIANTES = "estudiantes.csv";
 
-    public static ArrayList<Estudiante> cargarEstudiantes() {
-        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    public static TreeMap<String, Estudiante> cargarEstudiantes() {
+        TreeMap<String, Estudiante> estudiantes = new TreeMap<>();
         File archivo = new File(ARCHIVO_ESTUDIANTES);
 
         if (!archivo.exists()) {
@@ -27,15 +27,15 @@ public class GestorArchivos {
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(";", -1);
                 if (datos.length == 6) {
-                    String rut = datos[0];
-                    String nombre = datos[1];
+                    String rut      = datos[0];
+                    String nombre   = datos[1];
                     String apellidoP = datos[2];
                     String apellidoM = datos[3];
-                    int edad = Integer.parseInt(datos[4]);
-                    String curso = datos[5];
+                    int edad        = Integer.parseInt(datos[4]);
+                    String curso    = datos[5];
 
                     Estudiante e = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
-                    estudiantes.add(e);
+                    estudiantes.put(rut, e); // clave = RUT, busqueda O(log N) ordenada
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -45,9 +45,9 @@ public class GestorArchivos {
         return estudiantes;
     }
 
-    public static void guardarEstudiantes(ArrayList<Estudiante> lista) {
+    public static void guardarEstudiantes(TreeMap<String, Estudiante> mapa) {
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ARCHIVO_ESTUDIANTES), StandardCharsets.UTF_8))) {
-            for (Estudiante e : lista) {
+            for (Estudiante e : mapa.values()) {
                 // Formato: rut;nombre;apellidoP;apellidoM;edad;curso
                 String linea = String.format("%s;%s;%s;%s;%d;%s",
                         e.getRut(), e.getNombre(), e.getApellidoP(), e.getApellidoM(), e.getEdad(), e.getCurso());
