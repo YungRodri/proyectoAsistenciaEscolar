@@ -22,17 +22,18 @@ public class GestorArchivos {
             return estudiantes; // Retorna vacio si no existe
         }
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(";", -1);
                 if (datos.length == 6) {
-                    String rut      = datos[0];
-                    String nombre   = datos[1];
+                    String rut = datos[0];
+                    String nombre = datos[1];
                     String apellidoP = datos[2];
                     String apellidoM = datos[3];
-                    int edad        = Integer.parseInt(datos[4]);
-                    String curso    = datos[5];
+                    int edad = Integer.parseInt(datos[4]);
+                    String curso = datos[5];
 
                     Estudiante e = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
                     estudiantes.put(rut, e); // clave = RUT, busqueda O(log N) ordenada
@@ -46,7 +47,8 @@ public class GestorArchivos {
     }
 
     public static void guardarEstudiantes(TreeMap<String, Estudiante> mapa) {
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ARCHIVO_ESTUDIANTES), StandardCharsets.UTF_8))) {
+        try (BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(ARCHIVO_ESTUDIANTES), StandardCharsets.UTF_8))) {
             for (Estudiante e : mapa.values()) {
                 // Formato: rut;nombre;apellidoP;apellidoM;edad;curso
                 String linea = String.format("%s;%s;%s;%s;%d;%s",

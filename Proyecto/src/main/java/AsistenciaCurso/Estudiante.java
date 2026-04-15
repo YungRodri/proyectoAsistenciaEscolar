@@ -40,9 +40,15 @@ public class Estudiante extends Persona{
     }
 
     
-  public void agregarAsistencia(Asistencia asistencia)
-    {
+    // SIA-5: Sobrecarga 1 — agrega objeto Asistencia ya construido
+    public void agregarAsistencia(Asistencia asistencia) {
         listaAsistencia.add(asistencia);
+    }
+
+    // SIA-5: Sobrecarga 2 — crea una AsistenciaNormal y la agrega directamente
+    public void agregarAsistencia(String fecha, String observacion) {
+        String id = java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        listaAsistencia.add(new AsistenciaNormal(id, fecha, observacion, true));
     }
 
     public Asistencia buscarAsistencia(String id)

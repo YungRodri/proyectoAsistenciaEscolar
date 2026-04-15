@@ -90,7 +90,7 @@ public class Persona {
     }
 
     public void setApellidoP(String apellido) {
-        this.apellidoP = apellidoP;
+        this.apellidoP = apellido;
     }
     public void setApellidoM(String apellidoM) {
         this.apellidoM = apellidoM;
