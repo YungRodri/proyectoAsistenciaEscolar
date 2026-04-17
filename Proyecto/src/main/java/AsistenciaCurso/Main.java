@@ -18,9 +18,9 @@ public class Main {
 
     // Listado de cursos disponibles en el sistema
     public static String[] listaCursos = {
-            "1° Básico", "2° Básico", "3° Básico", "4° Básico", "5° Básico",
-            "6° Básico", "7° Básico", "8° Básico", "1° Medio", "2° Medio",
-            "3° Medio", "4° Medio"
+            "1 Basico", "2 Basico", "3 Basico", "4 Basico", "5 Basico",
+            "6 Basico", "7 Basico", "8 Basico", "1 Medio", "2 Medio",
+            "3 Medio", "4 Medio"
     };
 
     // Utilidades
@@ -136,7 +136,8 @@ public class Main {
         }
         int i = 1;
         for (Estudiante alumno : listaGlobal.values()) {
-            System.out.println(i + ". RUT: " + alumno.getRut() + " | " + alumno.getNombreCompleto() + " | Curso: " + alumno.getCurso() + " | Edad: " + alumno.getEdad());
+            System.out.println(i + ". RUT: " + alumno.getRut() + " | " + alumno.getNombreCompleto() + " | Curso: "
+                    + alumno.getCurso() + " | Edad: " + alumno.getEdad());
             i++;
         }
     }
@@ -269,7 +270,9 @@ public class Main {
         try {
             Estudiante alumno = obtenerEstudiantePorRut(rut);
             System.out.println("\nHistorial de " + alumno.getNombreCompleto());
-            System.out.println("Normales: " + alumno.contarAsistenciaNormales() + " | Inasistencias: " + alumno.contarAsistenciaExtraordinarias() + " | Salidas anticipadas: " + alumno.contarAsistenciasAnticipadas());
+            System.out.println("Normales: " + alumno.contarAsistenciaNormales() + " | Inasistencias: "
+                    + alumno.contarAsistenciaExtraordinarias() + " | Salidas anticipadas: "
+                    + alumno.contarAsistenciasAnticipadas());
             System.out.println();
             if (alumno.getListaAsistencia().isEmpty()) {
                 System.out.println("Sin registros de asistencia.");
@@ -431,16 +434,36 @@ public class Main {
             opcion = leerEntero();
 
             switch (opcion) {
-                case 1:  agregarEstudiante();     break;
-                case 2:  mostrarEstudiantes();    break;
-                case 3:  buscarEstudiante();       break;
-                case 4:  editarEstudiante();       break;
-                case 5:  eliminarEstudiante();     break;
-                case 6:  registrarAsistencia();    break;
-                case 7:  verHistorial();           break;
-                case 8:  editarAsistenciaMenu();   break;
-                case 9:  eliminarAsistenciaMenu(); break;
-                case 10: buscarAsistenciaMenu();   break;
+                case 1:
+                    agregarEstudiante();
+                    break;
+                case 2:
+                    mostrarEstudiantes();
+                    break;
+                case 3:
+                    buscarEstudiante();
+                    break;
+                case 4:
+                    editarEstudiante();
+                    break;
+                case 5:
+                    eliminarEstudiante();
+                    break;
+                case 6:
+                    registrarAsistencia();
+                    break;
+                case 7:
+                    verHistorial();
+                    break;
+                case 8:
+                    editarAsistenciaMenu();
+                    break;
+                case 9:
+                    eliminarAsistenciaMenu();
+                    break;
+                case 10:
+                    buscarAsistenciaMenu();
+                    break;
                 case 11:
                     Curso curso = generarCurso();
                     if (curso != null) {
@@ -458,11 +481,12 @@ public class Main {
                     for (Estudiante e : listaGlobal.values()) {
                         if (e.contarAsistenciaExtraordinarias() > max) {
                             System.out.println("  " + e.getNombreCompleto()
-                                + " - " + e.contarAsistenciaExtraordinarias() + " inasistencias");
+                                    + " - " + e.contarAsistenciaExtraordinarias() + " inasistencias");
                             hayAlumnos = true;
                         }
                     }
-                    if (!hayAlumnos) System.out.println("Ningun alumno supera el limite ingresado.");
+                    if (!hayAlumnos)
+                        System.out.println("Ningun alumno supera el limite ingresado.");
                     break;
                 case 0:
                     // SIA-11: Grabar datos al salir

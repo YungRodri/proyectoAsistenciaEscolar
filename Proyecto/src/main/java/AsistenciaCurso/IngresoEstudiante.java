@@ -22,18 +22,10 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         this.ventana = ventana;
         
         initComponents();
-        listaCursos.addItem("1° Basico");
-        listaCursos.addItem("2° Basico");
-        listaCursos.addItem("3° Basico");
-        listaCursos.addItem("4° Basico");
-        listaCursos.addItem("5° Basico");
-        listaCursos.addItem("6° Basico");
-        listaCursos.addItem("7° Basico");
-        listaCursos.addItem("8° Basico");
-        listaCursos.addItem("1° Medio");
-        listaCursos.addItem("2° Medio");
-        listaCursos.addItem("3° Medio");
-        listaCursos.addItem("4° Medio");
+        listaCursos.removeAllItems();
+        for (String curso : Main.listaCursos) {
+            listaCursos.addItem(curso);
+        }
     }
 
     /**
@@ -286,7 +278,15 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         String apellidoP = txtApellidoP.getText();
         String apellidoM = txtApellidoM.getText();
         String rut = txtRut.getText();
-        int edad = Integer.parseInt(txtEdad.getText());
+        
+        int edad = 0;
+        try {
+            edad = Integer.parseInt(txtEdad.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una edad v\u00E1lida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         String curso = (String)listaCursos.getSelectedItem();
 
         Estudiante alumno = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
