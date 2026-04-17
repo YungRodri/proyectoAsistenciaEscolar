@@ -4,8 +4,7 @@ import java.awt.CardLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Stack;
-import java.awt.*;
-import javax.swing.*;
+
 /**
  * Panel de menú principal de la interfaz gráfica.
  * Ofrece acceso a todas las funcionalidades del sistema (SIA-7, SIA-8, SIA-10).

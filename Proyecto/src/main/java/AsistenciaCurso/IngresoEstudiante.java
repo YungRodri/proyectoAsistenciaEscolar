@@ -5,8 +5,6 @@
  */
 package AsistenciaCurso;
 
-import java.util.TreeMap;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
