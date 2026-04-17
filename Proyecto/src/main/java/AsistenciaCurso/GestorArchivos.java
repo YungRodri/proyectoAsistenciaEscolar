@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.TreeMap;
 
 public class GestorArchivos {
-    private static final String ARCHIVO_ESTUDIANTES = "estudiantes.csv";
+    private static final String ARCHIVO_ESTUDIANTES = "resources/estudiantes.csv";
 
     public static TreeMap<String, Estudiante> cargarEstudiantes() {
         TreeMap<String, Estudiante> estudiantes = new TreeMap<>();
