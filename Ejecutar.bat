@@ -1,8 +1,11 @@
 @echo off
 echo Preparando Sistema de Asistencia Escolar...
-cd Proyecto
-call mvn clean package
+if not exist "out" mkdir out
+dir /s /B Proyecto\src\main\java\AsistenciaCurso\*.java > sources.txt
+javac -d out @sources.txt
+del sources.txt
+
 echo Iniciando programa...
-java -jar target/Proyecto-1.0-SNAPSHOT.jar
+java -cp out AsistenciaCurso.Main
 echo.
 pause

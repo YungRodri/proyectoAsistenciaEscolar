@@ -1,8 +1,12 @@
 #!/bin/bash
 echo "Preparando Sistema de Asistencia Escolar..."
-cd "$(dirname "$0")/Proyecto"
-mvn clean package
+cd "$(dirname "$0")"
+
+mkdir -p out
+javac -d out $(find Proyecto/src/main/java/AsistenciaCurso -name "*.java")
+
 echo "Iniciando programa..."
-java -jar target/Proyecto-1.0-SNAPSHOT.jar
+java -cp out AsistenciaCurso.Main
+
 echo ""
 read -p "Presiona ENTER para salir..."
