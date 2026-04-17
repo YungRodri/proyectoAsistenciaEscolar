@@ -3,7 +3,7 @@ echo "Preparando Sistema de Asistencia Escolar..."
 cd "$(dirname "$0")"
 
 mkdir -p out
-javac -d out $(find Proyecto/src/main/java/AsistenciaCurso -name "*.java")
+javac -d out Proyecto/src/main/java/AsistenciaCurso/*.java
 
 echo "Iniciando programa..."
 java -cp out AsistenciaCurso.Main
