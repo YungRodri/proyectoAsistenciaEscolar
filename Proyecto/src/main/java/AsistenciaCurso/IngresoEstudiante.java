@@ -247,7 +247,16 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         
         String[] opciones = {"Regresar al menu","Continuar","Salir"};
         int eleccion = JOptionPane.showOptionDialog(this,"Alumno ingresado exitosamente","",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
-        
+        /*int eleccion = JOptionPane.showOptionDialog(this,
+                "Alumno ingresado exitosamente",
+                "",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                opciones,
+                null);
+
+         */
         if(eleccion == 0){
             ventana.cambiarVista("menu"); 
         }else if(eleccion == 1){
