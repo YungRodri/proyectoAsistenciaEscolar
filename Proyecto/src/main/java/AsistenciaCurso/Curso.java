@@ -20,14 +20,6 @@ public class Curso {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-   
-    public boolean inscribirEstudiante(Estudiante estudiante){
-        if(estudiante != null && !estudiantes.containsKey(estudiante.getRut())){
-            estudiantes.put(estudiante.getRut(), estudiante);
-            return true;
-        }
-        return false;
-    }
     
     // SIA-5: Sobrecarga 1 — muestra todos los estudiantes
     public void mostrarEstudiantes() {
@@ -60,79 +52,7 @@ public class Curso {
             System.out.println("No hay estudiantes en ese curso.");
         }
     }
-    
-    public Estudiante buscarEstudiante(String rut){
-        return estudiantes.get(rut);
-    }
-    
-    public boolean editarEstudiante(String rut, String nombre, String ApellidoP, String ApellidoM, int edad){
-        Estudiante e = buscarEstudiante(rut);
-        if(e != null){
-            e.setNombre(nombre);
-            e.setApellidoP(ApellidoP);
-            e.setApellidoM(ApellidoM);
-            e.setEdad(edad);
-            return true;
-        }
-        return false;
-    }
-    
-    public void retirarEstudiante(String rut){
-         if(estudiantes.containsKey(rut)){
-             estudiantes.remove(rut);
-         }
-    }
-    
-    public void registrarAsistencia(String rut, Asistencia asistencias){
-        Estudiante e = buscarEstudiante(rut);
-        if(e != null){
-            e.agregarAsistencia(asistencias);
-        }
-    }
-    
-    public void mostrarAsistenciasDeEstudiante(String rut){
-        Estudiante e = buscarEstudiante(rut);
-        if(e != null){
-            e.mostrarHistorial();
-        } else{
-            System.out.println("Estudiante no encontrado.");
-        }
-    }
-    
-    public Asistencia buscarAsistenciaDeEstudiante(String rut, String id){
-        Estudiante e = buscarEstudiante(rut);
-        if(e!= null){
-            return e.buscarAsistencia(id);
-        } else{
-            return null;
-        }
-    }
-    
-    public boolean editarAsistenciaDeEstudiante(String rut, String id, String observacion){
-        Estudiante e = buscarEstudiante(rut);
-        if(e!= null){
-            return e.editarAsistencia(id, observacion);
-        }
-        return false;
-    }
-    
-    public boolean eliminarAsistenciaDeEstudiante(String rut, String id) {
-        Estudiante e = buscarEstudiante(rut);
-        if (e != null) {
-            return e.eliminarAsistencia(id);
-        }
-        return false;
-    }
-    
-    public void listarEstudiantesConMasdeInasistencias(int limite) {
-        for (Estudiante e : estudiantes.values()) {
-            int totalFaltas = e.contarAsistenciaExtraordinarias() + e.contarAsistenciasAnticipadas();
-            if (totalFaltas > limite) {
-                  System.out.println("Rut -> " + e.getRut() + " - " + e.getNombre() + e.getApellidoP() + e.getApellidoM());
-            }
-        }
-    }
-    
+     
     public void poblarCurso(TreeMap<String, Estudiante> mapaGlobal) {
         for (Estudiante alumno : mapaGlobal.values()) {
             if (alumno.getCurso().equalsIgnoreCase(this.nombre)) {
