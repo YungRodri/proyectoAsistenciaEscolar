@@ -18,6 +18,9 @@ El sistema está dividido en entidades principales para mantener el orden:
 
 ## Cómo ejecutarlo
 
-Al tratarse de un proyecto Java gestionado con **Maven**, puedes abrir la carpeta `Proyecto` en tu editor de código favorito (como IntelliJ IDEA, Eclipse o VS Code) y simplemente ejecutar la clase principal: `AsistenciaCurso.Main`.
+Hemos agregado ejecutables para iniciar el programa con un par de clics:
 
-¡Al iniciar, el programa te preguntará qué modo de visualización prefieres usar!
+- **En Linux o Mac:** Haz doble clic en el archivo `Ejecutar.sh` (y selecciona "Ejecutar en terminal"). O bien, desde una consola, ejecuta `./Ejecutar.sh`.
+- **En Windows:** Haz doble clic en el archivo `Ejecutar.bat`.
+
+*Nota:* La primera vez que lo ejecutes puede tardar unos segundos extra en compilar. Una vez abra, escribe el número del modo que quieres usar (1 para Ventana, 2 para Consola).
