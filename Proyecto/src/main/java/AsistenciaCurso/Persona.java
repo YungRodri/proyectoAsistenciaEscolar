@@ -9,18 +9,18 @@ package AsistenciaCurso;
  *
  * @author aleja
  */
-public class Persona {
+public class Persona  {
     private String nombre;
     private String apellidoP;
     private String apellidoM;
     private String rut;
     private int edad;
 
-    public Persona(String nombre, String apellidoP, String apellidoM, String rut, int edad) {
+    public Persona(String nombre, String apellidoP, String apellidoM, String rut, int edad)  throws RutInvalidoException {
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
-        this.rut = rut;
+        this.setRut(rut);
         this.edad = edad;
     }
 
@@ -97,11 +97,18 @@ public class Persona {
     }
     
 
-    public void setRut(String rut) {
+    public void setRut(String rut) throws RutInvalidoException
+    {
+        if (!validarRut(rut)) {
+            throw new RutInvalidoException(rut);
+        }
+
         this.rut = rut;
+
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(int edad)
+    {
         this.edad = edad;
     }
 

@@ -27,4 +27,5 @@ public class AsistenciaNormal extends Asistencia
             return "Vino a clases el día " + getFecha() + " pero no llegó temprano.";
         }
     }
+
 }

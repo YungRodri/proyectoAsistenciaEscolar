@@ -300,7 +300,42 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaCursosActionPerformed
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String nombre = txtNombre.getText().trim();
+        String apellidoP = txtApellidoP.getText().trim();
+        String apellidoM = txtApellidoM.getText().trim();
+        String rut = txtRut.getText().trim();
+        String curso = (String) listaCursos.getSelectedItem();
+
+        try {
+            if (nombre.isEmpty() || apellidoP.isEmpty() || apellidoM.isEmpty() || rut.isEmpty() || txtEdad.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+                return;
+            }
+
+            int edad = Integer.parseInt(txtEdad.getText().trim());
+
+            Estudiante alumno = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
+
+            Main.listaGlobal.put(alumno.getRut(), alumno);
+
+            agregarEstudiante();
+
+        } catch (RutInvalidoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            txtRut.requestFocus();
+            txtRut.selectAll();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser un número válido.");
+            txtEdad.requestFocus();
+            txtEdad.selectAll();
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+    /*private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = txtNombre.getText();
         String apellidoP = txtApellidoP.getText();
         String apellidoM = txtApellidoM.getText();
@@ -313,7 +348,7 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         Main.listaGlobal.put(alumno.getRut(), alumno);
         agregarEstudiante();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    */
     // CAMBIO 8: evento del nuevo botón
     private void btnVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {
         volverAlMenu();

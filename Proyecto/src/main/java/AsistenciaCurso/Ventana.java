@@ -20,7 +20,7 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
 
-        Main.listaGlobal = GestorArchivos.cargarEstudiantes();
+        //Main.listaGlobal = GestorArchivos.cargarEstudiantes();
 
         this.addWindowListener(new WindowAdapter() {
             @Override

@@ -15,7 +15,7 @@ public class Estudiante extends Persona{
     private String curso;
     private ArrayList<Asistencia> listaAsistencia;
     
-    public Estudiante(String nombre, String apellidoP, String apellidoM, String rut, int edad, String curso) {
+    public Estudiante(String nombre, String apellidoP, String apellidoM, String rut, int edad, String curso)  throws RutInvalidoException {
         super(nombre, apellidoP, apellidoM, rut, edad);      
         this.curso = curso;
         this.listaAsistencia = new ArrayList<>();
@@ -31,24 +31,45 @@ public class Estudiante extends Persona{
         this.curso = newCurso;
     }
 
-    public ArrayList<Asistencia> getListaAsistencia() {
-        return listaAsistencia;
+    public ArrayList<Asistencia> getListaAsistencia()
+    {
+        // mala practica retornar colecciones
+        // return listaAsistencia;
+        return new ArrayList<>(listaAsistencia);
     }
 
-    public void setListaAsistencia(ArrayList<Asistencia> listaAsistencia) {
-        this.listaAsistencia = listaAsistencia;
+    public void setListaAsistencia(ArrayList<Asistencia> listaAsistencia)
+    {
+        // mas de lo mismo , hago el cambio porq podrian modificar la lista desde afuera
+        // Por lo que vimos en clase en encapsulamiento , la clase debe poder modificarse solo en si misma
+
+        //this.listaAsistencia = listaAsistencia;
+        if(listaAsistencia != null)
+        {
+            this.listaAsistencia = new  ArrayList<>(listaAsistencia);
+        }
     }
 
     
     // SIA-5: Sobrecarga 1 — agrega objeto Asistencia ya construido
-    public void agregarAsistencia(Asistencia asistencia) {
-        listaAsistencia.add(asistencia);
+    public void agregarAsistencia(Asistencia asistencia)
+    {
+        if(listaAsistencia != null)
+        {
+            listaAsistencia.add(asistencia);
+
+        }
     }
 
     // SIA-5: Sobrecarga 2 — crea una AsistenciaNormal y la agrega directamente
-    public void agregarAsistencia(String fecha, String observacion) {
+    public void agregarAsistencia(String fecha, String observacion, boolean puntual)
+    {
+        /*
         String id = java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase();
         listaAsistencia.add(new AsistenciaNormal(id, fecha, observacion, true));
+        */
+        String id = java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        listaAsistencia.add(new AsistenciaNormal(id, fecha, observacion, puntual));
     }
 
     public Asistencia buscarAsistencia(String id)
@@ -145,7 +166,25 @@ public class Estudiante extends Persona{
     {
         return  listaAsistencia.size();
     }
+    /*
+     * Retorna el historial de asistencias como texto.
+     * Este método permite reutilizar la información tanto en consola como en ventana.
+     */
+    public String obtenerHistorialComoTexto() {
+        String texto = "";
+        Asistencia asistencia_cmp;
 
+        if (listaAsistencia.isEmpty()) {
+            return "El estudiante no tiene asistencias registradas.";
+        }
+
+        for (int i = 0; i < listaAsistencia.size(); i++) {
+            asistencia_cmp = listaAsistencia.get(i);
+            texto = texto + asistencia_cmp.getResumen() + "\n";
+        }
+
+        return texto;
+    }
 
     
     

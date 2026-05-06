@@ -62,6 +62,75 @@ public class Main {
      */
     public static void agregarEstudiante() {
         String opcion;
+
+        do {
+            System.out.println("\nAgregar Estudiante");
+
+            System.out.print("Nombre: ");
+            String nombre = entrada.nextLine();
+
+            System.out.print("Apellido Paterno: ");
+            String apellidoP = entrada.nextLine();
+
+            System.out.print("Apellido Materno: ");
+            String apellidoM = entrada.nextLine();
+
+            System.out.print("RUT (ej: 12345678-9): ");
+            String rut = entrada.nextLine().trim();
+
+            // Validación de edad
+            int edad = -1;
+            while (edad < 0) {
+                System.out.print("Edad: ");
+                try {
+                    edad = Integer.parseInt(entrada.nextLine().trim());
+
+                    if (edad < 0) {
+                        throw new NumberFormatException();
+                    }
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Ingrese un número válido para la edad.");
+                    edad = -1;
+                }
+            }
+
+            int numCurso;
+            do {
+                System.out.println("Seleccione un Curso (1-12):");
+
+                for (int i = 0; i < listaCursos.length; i++) {
+                    System.out.println((i + 1) + ". " + listaCursos[i]);
+                }
+
+                numCurso = leerEntero();
+
+                if (numCurso < 1 || numCurso > listaCursos.length) {
+                    System.out.println("Ingrese un número válido (1-12).");
+                }
+
+            } while (numCurso < 1 || numCurso > listaCursos.length);
+
+            String curso = listaCursos[numCurso - 1];
+
+            try {
+                Estudiante alumno = new Estudiante(nombre, apellidoP, apellidoM, rut, edad, curso);
+                listaGlobal.put(alumno.getRut(), alumno);
+                System.out.println("Estudiante registrado correctamente.");
+
+            } catch (RutInvalidoException e) {
+                System.out.println(e.getMessage());
+                System.out.println("El estudiante no fue registrado.");
+            }
+
+            System.out.print("¿Agregar otro? (S/N): ");
+            opcion = entrada.nextLine();
+
+        } while (opcion.equalsIgnoreCase("S"));
+    }
+    /*public static void agregarEstudiante()
+    {
+        String opcion;
         do {
             System.out.println("\nAgregar Estudiante");
             System.out.print("Nombre: ");
@@ -124,7 +193,7 @@ public class Main {
             opcion = entrada.nextLine();
         } while (opcion.equalsIgnoreCase("S"));
     }
-
+    */
     /**
      * Muestra el listado de todos los estudiantes registrados.
      */

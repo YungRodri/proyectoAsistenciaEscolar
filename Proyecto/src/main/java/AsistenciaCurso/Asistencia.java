@@ -9,7 +9,7 @@ package AsistenciaCurso;
  *
  * @author aleja
  */
-public class Asistencia {
+public abstract class Asistencia {
     private String id;
     private String fecha;
     private String observacion;
@@ -44,9 +44,9 @@ public class Asistencia {
         this.observacion = observacion;
     }
     
-    public String getResumen()
-    {
+    public abstract String getResumen();
+    /*{
         return "Registro de asistencia del día " + fecha;
-    }
+    }*/
 }
 
