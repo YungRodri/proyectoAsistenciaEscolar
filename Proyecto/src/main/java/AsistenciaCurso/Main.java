@@ -118,7 +118,7 @@ public class Main {
                 listaGlobal.put(alumno.getRut(), alumno);
                 System.out.println("Estudiante registrado correctamente.");
 
-            } catch (RutInvalidoException e) {
+            } catch (RutInvalidoException | EdadInvalidaException e) {
                 System.out.println(e.getMessage());
                 System.out.println("El estudiante no fue registrado.");
             }

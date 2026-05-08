@@ -23,18 +23,18 @@ public class IngresoEstudiante extends javax.swing.JPanel {
         this.ventana = ventana;
 
         initComponents();
-        listaCursos.addItem("1° Basico");
-        listaCursos.addItem("2° Basico");
-        listaCursos.addItem("3° Basico");
-        listaCursos.addItem("4° Basico");
-        listaCursos.addItem("5° Basico");
-        listaCursos.addItem("6° Basico");
-        listaCursos.addItem("7° Basico");
-        listaCursos.addItem("8° Basico");
-        listaCursos.addItem("1° Medio");
-        listaCursos.addItem("2° Medio");
-        listaCursos.addItem("3° Medio");
-        listaCursos.addItem("4° Medio");
+        listaCursos.addItem("1 Basico");
+        listaCursos.addItem("2 Basico");
+        listaCursos.addItem("3 Basico");
+        listaCursos.addItem("4 Basico");
+        listaCursos.addItem("5 Basico");
+        listaCursos.addItem("6 Basico");
+        listaCursos.addItem("7 Basico");
+        listaCursos.addItem("8 Basico");
+        listaCursos.addItem("1 Medio");
+        listaCursos.addItem("2 Medio");
+        listaCursos.addItem("3 Medio");
+        listaCursos.addItem("4 Medio");
     }
 
     @SuppressWarnings("unchecked")
@@ -330,6 +330,10 @@ public class IngresoEstudiante extends javax.swing.JPanel {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La edad debe ser un número válido.");
+            txtEdad.requestFocus();
+            txtEdad.selectAll();
+        } catch (EdadInvalidaException e) {
+            JOptionPane.showMessageDialog(this, "La edad debe ser mayor a 0.");
             txtEdad.requestFocus();
             txtEdad.selectAll();
         }

@@ -16,12 +16,12 @@ public class Persona  {
     private String rut;
     private int edad;
 
-    public Persona(String nombre, String apellidoP, String apellidoM, String rut, int edad)  throws RutInvalidoException {
+    public Persona(String nombre, String apellidoP, String apellidoM, String rut, int edad)  throws RutInvalidoException, EdadInvalidaException {
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.setRut(rut);
-        this.edad = edad;
+        this.setEdad(edad);
     }
 
     public boolean validarRut(String rut)
@@ -107,9 +107,12 @@ public class Persona  {
 
     }
 
-    public void setEdad(int edad)
+    public void setEdad(int edad) throws EdadInvalidaException
     {
-        this.edad = edad;
+        if (edad < 1){
+            throw new EdadInvalidaException(edad);
+        }
+        this.edad = edad;       
     }
 
     public String getNombre() {

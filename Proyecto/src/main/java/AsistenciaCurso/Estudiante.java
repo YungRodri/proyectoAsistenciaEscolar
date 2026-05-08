@@ -15,7 +15,7 @@ public class Estudiante extends Persona{
     private String curso;
     private ArrayList<Asistencia> listaAsistencia;
     
-    public Estudiante(String nombre, String apellidoP, String apellidoM, String rut, int edad, String curso)  throws RutInvalidoException {
+    public Estudiante(String nombre, String apellidoP, String apellidoM, String rut, int edad, String curso)  throws RutInvalidoException, EdadInvalidaException {
         super(nombre, apellidoP, apellidoM, rut, edad);      
         this.curso = curso;
         this.listaAsistencia = new ArrayList<>();

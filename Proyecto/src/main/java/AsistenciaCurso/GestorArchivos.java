@@ -64,6 +64,8 @@ public class GestorArchivos {
 
                     } catch (NumberFormatException e) {
                         System.err.println("Línea ignorada por edad inválida: " + linea);
+                    } catch (EdadInvalidaException e){
+                        System.err.println("Linea ignorada por edad negativa: " + e.getMessage());
                     }
                 }
             }
@@ -268,7 +270,7 @@ public class GestorArchivos {
             estudiantes.put(e2.getRut(), e2);
             estudiantes.put(e3.getRut(), e3);
 
-        } catch (RutInvalidoException e) {
+        } catch (RutInvalidoException | EdadInvalidaException e) {
             System.err.println("Error en datos iniciales: " + e.getMessage());
         }
 
