@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /**
  * Panel de menú principal de la interfaz gráfica.
- * Ofrece acceso a todas las funcionalidades del sistema (SIA-7, SIA-8, SIA-10).
+ * Ofrece acceso a las funcionalidades principales del sistema.
  */
 public class Menu extends JPanel {
 
@@ -28,26 +28,33 @@ public class Menu extends JPanel {
         add(titulo, BorderLayout.NORTH);
 
         // ---- Botones ----
-        JPanel panelBotones = new JPanel(new GridLayout(3, 1, 0, 12));
+        JPanel panelBotones = new JPanel(new GridLayout(5, 1, 0, 12));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(10, 80, 40, 80));
         panelBotones.setBackground(new Color(55, 65, 90));
 
         JButton btnIngresarEstudiante = crearBoton("Ingresar Estudiante");
         JButton btnGestionarEstudiantes = crearBoton("Gestionar Estudiantes");
         JButton btnAsistencias = crearBoton("Gestionar Asistencias");
+        JButton btnEstadisticas = crearBoton("Estadísticas Estudiante");
+        JButton btnResumenCurso = crearBoton("Resumen por Curso");
 
         btnIngresarEstudiante.addActionListener(e -> ventana.cambiarVista("estudiantes"));
+
         btnGestionarEstudiantes.addActionListener(e -> {
-            // Refrescar tabla al entrar al panel
             ventana.refrescarPanelEstudiantes();
             ventana.cambiarVista("gestionEstudiantes");
         });
+
         btnAsistencias.addActionListener(e -> ventana.cambiarVista("asistencias"));
+
+        btnEstadisticas.addActionListener(e -> ventana.cambiarVista("estadisticas"));
+        btnResumenCurso.addActionListener(e -> ventana.cambiarVista("resumenCurso"));
 
         panelBotones.add(btnIngresarEstudiante);
         panelBotones.add(btnGestionarEstudiantes);
         panelBotones.add(btnAsistencias);
-
+        panelBotones.add(btnEstadisticas);
+        panelBotones.add(btnResumenCurso);
         add(panelBotones, BorderLayout.CENTER);
     }
 

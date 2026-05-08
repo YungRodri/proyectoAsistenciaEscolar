@@ -41,6 +41,7 @@ public class Ventana extends javax.swing.JFrame {
         panelContenedor.add(new IngresoEstudiante(this), "estudiantes");
         panelContenedor.add(panelGestionEstudiantes, "gestionEstudiantes");
         panelContenedor.add(new PanelAsistencias(this), "asistencias");
+        panelContenedor.add(new PanelResumenCurso(this), "resumenCurso");
 
         layout.show(panelContenedor, "menu");
     }

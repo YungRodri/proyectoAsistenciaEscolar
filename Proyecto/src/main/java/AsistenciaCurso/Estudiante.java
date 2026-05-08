@@ -186,6 +186,17 @@ public class Estudiante extends Persona{
         return texto;
     }
 
-    
+    public double getPorcentajeAsistencia()
+    {
+        int total = getCantAsistencia();
+
+        if (total == 0) {
+            return 0.0;
+        }
+
+        int normales = contarAsistenciaNormales();
+
+        return (normales * 100.0) / total;
+    }
     
 }
