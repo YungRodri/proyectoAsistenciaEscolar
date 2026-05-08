@@ -28,7 +28,7 @@ public class Menu extends JPanel {
         add(titulo, BorderLayout.NORTH);
 
         // ---- Botones ----
-        JPanel panelBotones = new JPanel(new GridLayout(6, 1, 0, 12));
+        JPanel panelBotones = new JPanel(new GridLayout(8, 1, 0, 12));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(10, 80, 40, 80));
         panelBotones.setBackground(new Color(55, 65, 90));
 
@@ -38,7 +38,8 @@ public class Menu extends JPanel {
         JButton btnEstadisticas = crearBoton("Estadísticas Estudiante");
         JButton btnResumenCurso = crearBoton("Resumen por Curso");
         JButton btnGraficoEstudiante = crearBoton("Gráfico Estudiante");
-
+        JButton btnGraficoCurso = crearBoton("Gráfico Curso");
+        JButton btnAsistenciaGrupal = crearBoton("Asistencia Grupal");
         btnIngresarEstudiante.addActionListener(e -> ventana.cambiarVista("estudiantes"));
 
         btnGestionarEstudiantes.addActionListener(e -> {
@@ -51,12 +52,16 @@ public class Menu extends JPanel {
         btnEstadisticas.addActionListener(e -> ventana.cambiarVista("estadisticas"));
         btnResumenCurso.addActionListener(e -> ventana.cambiarVista("resumenCurso"));
         btnGraficoEstudiante.addActionListener(e -> ventana.cambiarVista("graficoEstudiante"));
+        btnGraficoCurso.addActionListener(e -> ventana.cambiarVista("graficoCurso"));
+        btnAsistenciaGrupal.addActionListener(e -> ventana.cambiarVista("asistenciaGrupal"));
         panelBotones.add(btnIngresarEstudiante);
         panelBotones.add(btnGestionarEstudiantes);
         panelBotones.add(btnAsistencias);
         panelBotones.add(btnEstadisticas);
         panelBotones.add(btnResumenCurso);
         panelBotones.add(btnGraficoEstudiante);
+        panelBotones.add(btnGraficoCurso);
+        panelBotones.add(btnAsistenciaGrupal);
         add(panelBotones, BorderLayout.CENTER);
     }
 

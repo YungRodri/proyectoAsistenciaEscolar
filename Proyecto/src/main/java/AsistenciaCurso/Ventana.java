@@ -43,7 +43,8 @@ public class Ventana extends javax.swing.JFrame {
         panelContenedor.add(new PanelAsistencias(this), "asistencias");
         panelContenedor.add(new PanelResumenCurso(this), "resumenCurso");
         panelContenedor.add(new PanelGraficoEstudiante(this), "graficoEstudiante");
-
+        panelContenedor.add(new PanelGraficoCurso(this), "graficoCurso");
+        panelContenedor.add(new PanelAsistenciaGrupal(this), "asistenciaGrupal");
         layout.show(panelContenedor, "menu");
     }
 
