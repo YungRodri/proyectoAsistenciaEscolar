@@ -1,9 +1,9 @@
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
 /**
- * Excepción personalizada lanzada cuando no existe ningún estudiante
- * registrado con el RUT proporcionado.
- * Cumple requisito SIA-12.
+ * Excepción propia (SIA-M2) para cuando buscamos un alumno por RUT
+ * y no existe en los registros. Así el programa lanza esto y mostramos
+ * un popup, evitando un temido NullPointerException.
  */
 public class EstudianteNoEncontradoException extends Exception {
 

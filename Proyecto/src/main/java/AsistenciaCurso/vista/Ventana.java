@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * JFrame principal de la aplicación.
+ * Organiza todos los paneles. Capa Vista (MVC).
+ */
 
 import java.awt.CardLayout;
 import java.awt.event.WindowAdapter;

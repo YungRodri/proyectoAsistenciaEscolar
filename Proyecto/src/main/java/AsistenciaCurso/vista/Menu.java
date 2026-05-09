@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel de Menú Principal.
+ * Redirige a los demás paneles. Capa Vista (MVC).
+ */
 
 import java.awt.*;
 import javax.swing.*;

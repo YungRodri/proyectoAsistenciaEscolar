@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel para ver el detalle de asistencias de un alumno.
+ * Lo separamos en MVC (SIA-O4) para que la vista solo se encargue de mostrar los datos.
+ */
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
 /**
- *
- * @author aleja
+ * Subclase de Asistencia.
+ * La usamos cuando el alumno falta a clases justificadamente o por una razón mayor.
+ * Nos permite guardar el 'motivo' exacto (ej. certificado médico).
  */
 public class InasistenciaExtraordinaria extends Asistencia{
     private String motivo;

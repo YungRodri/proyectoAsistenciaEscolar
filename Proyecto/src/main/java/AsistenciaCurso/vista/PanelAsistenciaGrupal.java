@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel para pasar asistencia a todo un curso de forma rápida.
+ * Completamente integrado a la arquitectura MVC.
+ */
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

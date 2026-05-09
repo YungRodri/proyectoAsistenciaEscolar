@@ -3,18 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import AsistenciaCurso.EdadInvalidaException;
+import AsistenciaCurso.RutInvalidoException;
 
 /**
- *
- * @author aleja
+ * Representa a un estudiante de nuestro colegio. 
+ * Además de sus datos personales (heredados de Persona), maneja a qué curso pertenece
+ * y guarda su lista de asistencias a lo largo del año.
  */
 public class Estudiante extends Persona{
     private String curso;
     private ArrayList<Asistencia> listaAsistencia;
     
+    /**
+     * Constructor del estudiante. 
+     * Como hereda de Persona, si le pasamos un RUT malo o edad negativa, 
+     * saltarán las excepciones automáticamente.
+     */
     public Estudiante(String nombre, String apellidoP, String apellidoM, String rut, int edad, String curso)  throws RutInvalidoException, EdadInvalidaException {
         super(nombre, apellidoP, apellidoM, rut, edad);      
         this.curso = curso;
@@ -31,27 +42,36 @@ public class Estudiante extends Persona{
         this.curso = newCurso;
     }
 
-    public ArrayList<Asistencia> getListaAsistencia()
+    /**
+     * OBTENER EL HISTORIAL.
+     * Retornamos una lista "unmodifiable" (de solo lectura). 
+     * Hicimos esto como corrección porque retornar la lista directamente es una mala práctica
+     * que rompe el encapsulamiento.
+     *
+     * @return Una vista de solo lectura del historial de asistencias.
+     */
+    public List<Asistencia> getListaAsistencia()
     {
-        // mala practica retornar colecciones
-        // return listaAsistencia;
-        return new ArrayList<>(listaAsistencia);
+        return Collections.unmodifiableList(listaAsistencia);
     }
 
     public void setListaAsistencia(ArrayList<Asistencia> listaAsistencia)
     {
         // mas de lo mismo , hago el cambio porq podrian modificar la lista desde afuera
         // Por lo que vimos en clase en encapsulamiento , la clase debe poder modificarse solo en si misma
-
-        //this.listaAsistencia = listaAsistencia;
         if(listaAsistencia != null)
         {
-            this.listaAsistencia = new  ArrayList<>(listaAsistencia);
+            this.listaAsistencia = new ArrayList<>(listaAsistencia);
         }
     }
 
-    
-    // SIA-5: Sobrecarga 1 — agrega objeto Asistencia ya construido
+    /**
+     * SOBRECARGA 1: Agregar asistencia recibiendo el objeto ya instanciado.
+     * La usamos cuando creamos el objeto Asistencia en los controladores
+     * (por ejemplo, desde la interfaz gráfica ya armamos el objeto completo).
+     *
+     * @param asistencia El objeto de asistencia a guardar en el historial.
+     */
     public void agregarAsistencia(Asistencia asistencia)
     {
         if(listaAsistencia != null)
@@ -61,7 +81,18 @@ public class Estudiante extends Persona{
         }
     }
 
-    // SIA-5: Sobrecarga 2 — crea una AsistenciaNormal y la agrega directamente
+    /**
+     * SOBRECARGA 2: Agregar asistencia pasando solo los datos básicos.
+     * Los ayudantes nos preguntaron por qué hicimos esta sobrecarga:
+     * La justificamos porque al probar el programa en modo consola, era muy tedioso
+     * tener que instanciar objetos completos a mano en el Main. Con este método,
+     * simplemente le pasamos la fecha y la observación como strings, y la clase Estudiante
+     * se encarga de crear el objeto AsistenciaNormal por nosotros. Nos ahorra mucho código repetido.
+     *
+     * @param fecha La fecha en formato DD/MM/AAAA.
+     * @param observacion Una nota opcional sobre la asistencia.
+     * @param puntual true si llegó a la hora, false si llegó tarde.
+     */
     public void agregarAsistencia(String fecha, String observacion, boolean puntual)
     {
         /*
@@ -72,6 +103,11 @@ public class Estudiante extends Persona{
         listaAsistencia.add(new AsistenciaNormal(id, fecha, observacion, puntual));
     }
 
+    /**
+     * Busca un registro de asistencia en el historial usando su ID único.
+     * @param id El código autogenerado de la asistencia.
+     * @return La asistencia encontrada, o null si no existe.
+     */
     public Asistencia buscarAsistencia(String id)
     {
         int largo = listaAsistencia.size();

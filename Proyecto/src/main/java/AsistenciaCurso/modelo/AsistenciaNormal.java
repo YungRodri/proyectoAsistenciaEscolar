@@ -1,5 +1,10 @@
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
+/**
+ * Subclase concreta que hereda de Asistencia.
+ * Representa cuando un alumno sí vino a clases. Agregamos el booleano 'puntual'
+ * para saber si llegó atrasado o no, lo cual nos sirve para las estadísticas.
+ */
 public class AsistenciaNormal extends Asistencia
 {
     private boolean puntual;

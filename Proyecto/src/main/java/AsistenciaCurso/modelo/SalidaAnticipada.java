@@ -1,5 +1,10 @@
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
+/**
+ * Subclase de Asistencia.
+ * La usamos cuando el alumno vino al colegio pero se fue antes de tiempo.
+ * Guardamos la 'horaSalida' para tener el registro exacto.
+ */
 public class SalidaAnticipada extends Asistencia
 {
     private String horaSalida;

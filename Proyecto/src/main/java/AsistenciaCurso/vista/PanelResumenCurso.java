@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel que genera un reporte en tabla y permite exportarlo a Excel (SIA-O2).
+ * Sirve para tener una vista general del estado de todo el curso.
+ */
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

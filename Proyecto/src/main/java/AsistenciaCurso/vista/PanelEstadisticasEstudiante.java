@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel para ver de forma rápida los números de un alumno (cuántas veces faltó, etc).
+ * Se integra con el MVC delegando las búsquedas al Controlador.
+ */
 import javax.swing.*;
 import java.awt.*;
 

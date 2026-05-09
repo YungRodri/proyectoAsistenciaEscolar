@@ -22,5 +22,3 @@ Hemos agregado ejecutables para iniciar el programa con un par de clics:
 
 - **En Linux o Mac:** Haz doble clic en el archivo `Ejecutar.sh` (y selecciona "Ejecutar en terminal"). O bien, desde una consola, ejecuta `./Ejecutar.sh`.
 - **En Windows:** Haz doble clic en el archivo `Ejecutar.bat`.
-
-*Nota:* La primera vez que lo ejecutes puede tardar unos segundos extra en compilar. Una vez abra, escribe el número del modo que quieres usar (1 para Ventana, 2 para Consola).

@@ -4,6 +4,10 @@ import java.util.TreeMap;
 import java.util.Scanner;
 import java.util.UUID;
 
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.vista.*;
+import AsistenciaCurso.controlador.*;
+
 /**
  * Clase principal del Sistema de Asistencia Escolar.
  * Contiene la lista global de estudiantes, el menú de consola

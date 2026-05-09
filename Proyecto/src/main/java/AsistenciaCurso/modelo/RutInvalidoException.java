@@ -1,9 +1,9 @@
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
 /**
- * Excepción personalizada lanzada cuando el RUT ingresado no cumple
- * con el formato y dígito verificador del RUT chileno.
- * Cumple requisito SIA-12.
+ * Excepción personalizada para atrapar RUTs inválidos.
+ * Nos sirve para que el programa no colapse si se intenta ingresar
+ * un estudiante con un RUT que no cumple la fórmula del dígito verificador.
  */
 public class RutInvalidoException extends Exception {
 

@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel que usa JFreeChart (SIA-O1) para mostrar gráficos a nivel de curso.
+ * Así podemos ver visualmente cómo va el rendimiento de asistencia de todo un grado.
+ */
 
 import javax.swing.*;
 import java.awt.*;

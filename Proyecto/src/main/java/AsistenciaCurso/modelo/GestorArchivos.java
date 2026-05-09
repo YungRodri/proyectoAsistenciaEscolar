@@ -1,4 +1,4 @@
-package AsistenciaCurso;
+package AsistenciaCurso.modelo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,6 +11,11 @@ import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import java.util.TreeMap;
 
+/**
+ * Clase encargada de la Persistencia de Datos (SIA-P1).
+ * Su función es guardar y cargar los datos desde los archivos CSV
+ * para que no perdamos la información al cerrar el programa.
+ */
 public class GestorArchivos {
 
     // CAMBIO 1:
@@ -20,6 +25,11 @@ public class GestorArchivos {
     private static final String ARCHIVO_ESTUDIANTES = "resources/estudiantes.csv";
     private static final String ARCHIVO_ASISTENCIAS = "resources/asistencias.csv";
 
+    /**
+     * Carga todos los estudiantes desde el CSV al iniciar el programa.
+     * Si el archivo no existe, no falla, sino que crea uno con alumnos de prueba.
+     * @return TreeMap con los estudiantes cargados (RUT -> Estudiante).
+     */
     public static TreeMap<String, Estudiante> cargarEstudiantes() {
         TreeMap<String, Estudiante> estudiantes = new TreeMap<>();
         File archivo = new File(ARCHIVO_ESTUDIANTES);
@@ -89,6 +99,11 @@ public class GestorArchivos {
         return estudiantes;
     }
 
+    /**
+     * Guarda la memoria actual del programa (el mapa global) en los archivos CSV.
+     * Siempre guarda la lista actualizada de alumnos y luego llama a guardarAsistencias.
+     * @param mapa El TreeMap global con todos los estudiantes en memoria.
+     */
     public static void guardarEstudiantes(TreeMap<String, Estudiante> mapa) {
 
         // CAMBIO 6:

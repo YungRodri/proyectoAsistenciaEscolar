@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel para administrar a los estudiantes (eliminar, editar o simplemente listarlos).
+ * Separa la vista del modelo para cumplir con MVC.
+ */
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -1,4 +1,12 @@
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel que usa JFreeChart (SIA-O1) para mostrar un gráfico de torta 
+ * con el porcentaje de asistencia de un solo estudiante.
+ */
 
 import javax.swing.*;
 import java.awt.*;

@@ -3,7 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AsistenciaCurso;
+package AsistenciaCurso.vista;
+
+import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.controlador.*;
+
+/**
+ * Panel para el formulario de ingreso de un nuevo estudiante.
+ * Pertenece a la capa Vista del MVC (SIA-O4).
+ */
 
 import javax.swing.JOptionPane;
 
