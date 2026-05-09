@@ -2,6 +2,7 @@ package AsistenciaCurso.vista;
 
 import AsistenciaCurso.modelo.*;
 import AsistenciaCurso.controlador.*;
+import AsistenciaCurso.Main;
 
 /**
  * Panel para ver de forma rápida los números de un alumno (cuántas veces faltó, etc).

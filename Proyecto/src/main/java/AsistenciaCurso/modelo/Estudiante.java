@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import AsistenciaCurso.EdadInvalidaException;
-import AsistenciaCurso.RutInvalidoException;
-
 /**
  * Representa a un estudiante de nuestro colegio. 
  * Además de sus datos personales (heredados de Persona), maneja a qué curso pertenece

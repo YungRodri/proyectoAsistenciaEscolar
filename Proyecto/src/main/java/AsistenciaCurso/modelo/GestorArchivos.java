@@ -20,7 +20,8 @@ public class GestorArchivos {
 
     // CAMBIO 1:
     // Antes solo existía ARCHIVO_ESTUDIANTES.
-    // Ahora agregamos una constante para la carpeta y otra para guardar asistencias.
+    // Ahora agregamos una constante para la carpeta y otra para guardar
+    // asistencias.
     private static final String CARPETA = "resources";
     private static final String ARCHIVO_ESTUDIANTES = "resources/estudiantes.csv";
     private static final String ARCHIVO_ASISTENCIAS = "resources/asistencias.csv";
@@ -28,6 +29,7 @@ public class GestorArchivos {
     /**
      * Carga todos los estudiantes desde el CSV al iniciar el programa.
      * Si el archivo no existe, no falla, sino que crea uno con alumnos de prueba.
+     * 
      * @return TreeMap con los estudiantes cargados (RUT -> Estudiante).
      */
     public static TreeMap<String, Estudiante> cargarEstudiantes() {
@@ -74,7 +76,7 @@ public class GestorArchivos {
 
                     } catch (NumberFormatException e) {
                         System.err.println("Línea ignorada por edad inválida: " + linea);
-                    } catch (EdadInvalidaException e){
+                    } catch (EdadInvalidaException e) {
                         System.err.println("Linea ignorada por edad negativa: " + e.getMessage());
                     }
                 }
@@ -101,7 +103,9 @@ public class GestorArchivos {
 
     /**
      * Guarda la memoria actual del programa (el mapa global) en los archivos CSV.
-     * Siempre guarda la lista actualizada de alumnos y luego llama a guardarAsistencias.
+     * Siempre guarda la lista actualizada de alumnos y luego llama a
+     * guardarAsistencias.
+     * 
      * @param mapa El TreeMap global con todos los estudiantes en memoria.
      */
     public static void guardarEstudiantes(TreeMap<String, Estudiante> mapa) {
@@ -277,7 +281,8 @@ public class GestorArchivos {
             e1.agregarAsistencia(new AsistenciaNormal("A001", "06/05/2026", "Presente en clases", true));
             e1.agregarAsistencia(new SalidaAnticipada("A002", "07/05/2026", "Retiro por apoderado", "11:30"));
 
-            e2.agregarAsistencia(new InasistenciaExtraordinaria("A003", "06/05/2026", "No asiste", "Certificado médico"));
+            e2.agregarAsistencia(
+                    new InasistenciaExtraordinaria("A003", "06/05/2026", "No asiste", "Certificado médico"));
 
             e3.agregarAsistencia(new AsistenciaNormal("A004", "06/05/2026", "Presente con atraso", false));
 

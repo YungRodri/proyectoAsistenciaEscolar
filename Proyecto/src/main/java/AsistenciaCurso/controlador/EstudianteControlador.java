@@ -2,6 +2,7 @@ package AsistenciaCurso.controlador;
 
 import AsistenciaCurso.Main;
 import AsistenciaCurso.modelo.Estudiante;
+import AsistenciaCurso.Main;
 import AsistenciaCurso.modelo.EstudianteNoEncontradoException;
 
 import java.util.Collection;

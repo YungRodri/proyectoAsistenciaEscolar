@@ -1,6 +1,7 @@
 package AsistenciaCurso.vista;
 
 import AsistenciaCurso.modelo.*;
+import AsistenciaCurso.Main;
 import AsistenciaCurso.controlador.*;
 
 /**
